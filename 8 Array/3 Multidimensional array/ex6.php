@@ -23,6 +23,16 @@ function display($g){
     $a=initialize($r,$c);
     echo "Matrix is : <br>";
     display($a);
-    $sum = $a[0][2]+$a[1][1]+$a[2][0];
-    echo "Sum of anti-diagonal : <b> " . $sum . "<b>"; 
+    /*$sum = $a[0][2]+$a[1][1]+$a[2][0];
+    echo "Sum of anti-diagonal : <b> " . $sum . "</b>"; 
+    */
+    $sum = 0;
+    for($i=0;$i<$r;$i++){
+        for($j=0;$j<$c;$j++){
+            if($i+$j+1 == $c){
+                $sum += $a[$i][$j];
+            }
+        }
+    }
+    echo "Sum of anti-diagonal : <b> " . $sum . "</b>"; 
 ?>

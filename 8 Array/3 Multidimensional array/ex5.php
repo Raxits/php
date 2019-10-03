@@ -31,5 +31,5 @@ function display($g){
         }
     }
 
-    echo "Sum of diagonal : <b> " . $sum . "<b>"; 
+    echo "Sum of diagonal : <b> " . $sum . "</b>"; 
 ?>
