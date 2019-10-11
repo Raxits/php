@@ -23,7 +23,7 @@
             <option value="USA">USA</option>
             <option value="BRAZIL">BRAZIL</option>
             <option value="INDIA">INDIA</option>
-            <option value="PAKISTAN">PAKISTAN</option>
+            <option value="ENGLAND">ENGLAND</option>
             <option value="CHINA">CHINA</option>
             <option value="RUSSIA">RUSSIA</option>
         </select>
