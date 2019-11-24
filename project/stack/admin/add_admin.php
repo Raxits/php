@@ -8,7 +8,7 @@
   @$gender = $_REQUEST['gender'];
   @$kl1 = implode(", ",$_REQUEST['kl']);
   @$pi = $_FILES['pimg']['name'];
-
+  @$id = $_REQUEST['id'];
   @$pilocation = $_FILES['pimg']['tmp_name'];
 
 
@@ -22,38 +22,68 @@
   {
     if (!(empty($un)||empty($pd)||empty($em)||empty($con)||empty($gender)||empty($kl1)||empty($pi)))
     {
+      if($_REQUEST['id'] == 0){
       $sql = "insert into admin(name,pwd,email,country,gender,knownlang,profileimg) values  ('$un','$pd','$em','$con','$gender','$kl1','$pflocation')";
       
-      if(move_uploaded_file(@$pilocation,@$pflocation))
-      {
-        if($conn->query($sql)){
-          $msg = "<div class='alert alert-success' role='alert'>Success fully inserted</div>";
-          /*header("location:add_admin.php?msg=$msg");
-          exit;*/
+        if(move_uploaded_file(@$pilocation,@$pflocation))
+        {
+          if($conn->query($sql)){
+            $msg = "<div class='alert alert-success' role='alert'>Success fully inserted</  div>";
+            /*header("location:add_admin.php?msg=$msg");
+            exit;*/
+          
+            $un = "";
+            $pd = "";
+            $em = "";
+            $con = "";
+            $gender = "";
+            $pi = "";
+            $kl1="";
+          }
+          else
+            $msg = "<div class='alert alert-danger' role='alert'>Failed to insert</div>";
 
-          $un = "";
-          $pd = "";
-          $em = "";
-          $con = "";
-          $gender = "";
-          $pi = "";
-          $kl1="";
+        }    
+        else{
+          $msg = "<div class='alert alert-danger' role='alert'>Failed to upload image</div>";
         }
-        else
-          $msg = "<div class='alert alert-danger' role='alert'>Failed to insert</div>";
-
+      }else{
+        if($_REQUEST['id'] != 0){
+          $sql = "update admin set name='$un',pwd='$pd',email='$em',country='$con', gender='$gender',knownlang='$kl1',profileimg='$pflocation' where id= $id";
+          if(move_uploaded_file(@$pilocation,@$pflocation))
+          {
+            if($conn->query($sql)){
+              $msg = "<div class='alert alert-success' role='alert'>Success fully inserted</  div>";
+              $un = "";
+              $pd = "";
+              $em = "";
+              $con = "";
+              $gender = "";
+              $pi = "";
+              $kl1="";
+            
+              header('location:view_admin.php');
+              exit;
+            
+            }
+            else
+              $msg = "<div class='alert alert-danger' role='alert'>Failed to update</div>";
+          
+          }
+          else{
+            $msg = "<div class='alert alert-danger' role='alert'>Failed to upload image</ div>";
+          }
+          
+        }
       }
-      else{
-        $msg = "<div class='alert alert-danger' role='alert'>Failed to upload image</div>";
-      }
-    }
-    else{
+  } 
+  else{
       $msg = "<div class='alert alert-danger' role='alert'>Enter All Field</div>";
 
-    }
+  }
   }
 
-  @$kl2 = explode(', ',@$kl1);
+  @$kl2 = explode(', ',@$_REQUEST['kl']);
   for($i=0;$i<3;$i++){
 
     if(@$kl2[$i] == "Chinese")
@@ -75,8 +105,8 @@
 
 <div id="content">
 <div id="content-header">
-  <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">Admin</a> <a href="#" class="current">Add Admin</a> </div>
-  <h1>Add Admin</h1>
+  <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">Admin</a> <a href="#" class="current"><?php if(@$_REQUEST['id']!=0){echo "Update Admin";}else{echo "Add Admin";}?></a> </div>
+  <h1><?php if(@$_REQUEST['id']!=0){echo "Update Admin";}else{echo "Add Admin";}?></h1>
 </div>
 <div class="container-fluid">
   <hr>
@@ -84,11 +114,15 @@
     <div class="span6">
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Admin</h5>
+          <h5><?php if(@$_REQUEST['id']!=0){echo "Update Admin";}else{echo "Add Admin";}?></h5>
         </div>
-        <?php echo @$msg; ?>
+        <div class="control-group">
+
+          <?php echo @$msg; ?>
+        </div>
         <div class="widget-content nopadding">
           <form action="#" method="post" class="form-horizontal"enctype="multipart/form-data" >
+          
             <div class="control-group">
               <label class="control-label">Full Name :</label>
               <div class="controls">
@@ -153,11 +187,13 @@
               <label class="control-label">Profile Image</label>
               <div class="controls">
                 <input type="file" name="pimg" accept="image/jpeg"/>
+                
               </div>
+              
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-success" name="submit">Add Admin</button>
+              <button type="submit" class="btn btn-success" name="submit" value="<?php echo $_REQUEST['id'];?> "><?php if(@$_REQUEST['id']!=0){echo "Update";}else{echo "Add Admin";}?></button>
             </div>
           </form>
         </div>
@@ -167,7 +203,8 @@
     </div>
   </div>
   
-</div></div>
+</div>
+</div>
 <!--Footer-part-->
 <?php
    include('footer.php');
