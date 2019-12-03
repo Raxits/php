@@ -1,4 +1,5 @@
 <?php include('header.php');
+include('../db.php');
 
 
 
@@ -25,15 +26,15 @@
                     <th>Gender</th>
                     <th>Known Languages</th>
                     <th>Profile Image</th>
-                    <th>Modify/Delete</th>
+                    <th colspan='2'>Modify/Delete</th>
                   </tr>
               </thead>
               <tbody>
                 
               <?php
                 $sql = "Select * From admin";
-                $r = $conn->query($sql);
-                if($r->num_rows>0){
+                $r = $con->query($sql);
+                if(@$r->num_rows>0){
                   while($r1=$r->fetch_assoc()){
                     echo" <tr class='even gradeA'>";
                     echo" <td style='text-align:center;'>" . $r1['name'] . "</td>";
@@ -43,8 +44,10 @@
                     echo" <td style='text-align:center;'>" . $r1['knownlang'] . "</td>";
                     echo" <td style='text-align:center;'> <img src='" . $r1['profileimg'] ."' style='max-height : 80px; max-width : 80px;' alt ='". $r1['profileimg'] ."'> </td>";
                     
-                    echo "<td> <a class='btn btn-success' name='submit' href='add_admin.php?id=".$r1['id']."&un=".$r1['name']."&em=".$r1['email']."&con=".$r1['country']."&gender=".$r1['gender']."&kl=".$r1['knownlang']."' >Modify</a> ";
-                    echo "<a class='btn btn-danger' name='submit' href='del_admin.php?id=".$r1['id']."&un=".$r1['name']."&em=".$r1['email']."&con=".$r1['country']."&gender=".$r1['gender']."&kl=".$r1['knownlang']."&pf=".$r1['profileimg']."'>Delete</a> </td>";
+                    echo "<td style='text-align:center;'> <a class='btn btn-success' name='submit' href='add_admin.php?id=".$r1['id']."&id1=2' >Modify</a> </td>";
+                    
+                    echo "<td style='text-align:center;'>
+                      <a class='btn btn-danger' name='delete' href='del_admin.php?id=".$r1['id']."&un=".$r1['name']."&em=".$r1['email']."&con=".$r1['country']."&gender=".$r1['gender']."&kl=".$r1['knownlang']."&pf=".$r1['profileimg']."'>Delete</a> </td>";
                     echo " </tr>";
                   }
                 }

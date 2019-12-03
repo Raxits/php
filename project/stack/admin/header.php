@@ -4,6 +4,12 @@
 <title>Matrix Admin</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+      <!-- Icon -->
+      <link rel="stylesheet" href="../assets/fonts/line-icons.css">
+
+
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="css/fullcalendar.css" />
@@ -12,6 +18,8 @@
 <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+
 </head>
 <body>
 
@@ -58,17 +66,20 @@
 
       </ul>
     </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>File System</span> </a>
+    <ul>
+        <li><a href="add_file.php">Add File/Directory</a></li>
+        <li><a href="view_file.php">View Directory</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Features</span> </a>
+      <ul>
+        <li><a href="add_feature.php">Add Feature</a></li>
+        <li><a href="view_feature.php">View Feature</a></li>
+
+      </ul>
+    </li>
+
 </div>
 <!--sidebar-menu-->
-
-<?php
-$server = "localhost";
-$user = "root";
-$pwd = "";
-$db = "stack";
-
-$conn = new mysqli($server,$user,$pwd,$db);
-if($conn->connect_error){
-  echo "connection failed";
-}
-?>

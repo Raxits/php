@@ -56,7 +56,7 @@ if(isset($_REQUEST['submit'])){
                     echo" <td>" . $con . "</td>";
                     echo" <td>" . $gender . "</td>";
                     echo" <td>" . $kl1 . "</td>";
-                    echo" <td> <img src='" . $pf."' width = 50px height = 50px alt ='". $pf ."'> </td>";                    
+                    echo" <td> <img src='".$pf."' width = 50px height = 50px alt ='". $pf ."'> </td>";                    
                     echo " </tr>";
   
                 ?>
