@@ -3,6 +3,31 @@
 
 include('../db.php');
 
+if(isset($_REQUEST['delete'])){
+  $dir = $_REQUEST['delete'];
+
+  if(file_exists($dir) || is_dir($dir)){
+  
+  if(is_file($dir)){
+      if(unlink($dir)){
+          echo "Delete Successfull";
+      }
+      else{
+          echo "Delete Unsuccessfull";
+      }
+  
+  }
+  elseif(is_dir($dir)){
+      if(rmdir($dir)){
+          echo "Delete Successfully";
+      }
+      else{
+          echo "Unsuccessfull";
+      }
+  }
+  }
+}
+
 
 ?>
 <div id="content">
@@ -43,8 +68,8 @@ include('../db.php');
               <?php
                 if(isset($_REQUEST['in'])){
                     @$dir=$_REQUEST['in'];
-                    $file=scandir($dir);
-                    $file=array_diff($file,array(".",".."));
+                    @$file=scandir($dir);
+                    @$file=array_diff($file,array(".",".."));
                     foreach($file as $f){
                         if(is_dir("$dir/$f")){
                           echo "<tr style='text-align:center;'>";
@@ -52,9 +77,9 @@ include('../db.php');
                           echo "<td></td>";
                           echo "<td style='text-align:center;'>".filetype($dir."/".$f)."</td>";
                           echo "<td></td>";
-                          echo "<td style='text-align:center;'><button type='submit' class='btn btn-success' name='rename'>Rename</button>
+                          echo "<td style='text-align:center;'><a type='submit' class='btn btn-success' name='rename' href='add_file.php?rename1=$dir/$f'>Rename</a>
                           </td>";
-                          echo "<td style='text-align:center;'><button type='submit' class='btn btn-danger' name='rename'>Delete</button></td>";
+                          echo "<td style='text-align:center;'><a type='submit' class='btn btn-danger' name='rmdr' href='view_file.php?rmdr=$dir/$f'>Delete</a></td>";
 
                           echo "</tr>";
                          }

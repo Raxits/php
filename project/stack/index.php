@@ -3,7 +3,14 @@ include('db.php');
   //feature set
   $sql = "SELECT * FROM feature ORDER BY id DESC LIMIT 3";
   $fres = $con->query($sql);
-
+  $sql = "SELECT * FROM service order by id desc limit 6";
+  $ser = $con->query($sql);
+  $sql = "select * from team order by id desc limit 4";
+  $tem = $con->query($sql);
+  $sql = "select * from plan order by id desc limit 3";
+  $pln = $con->query($sql);
+  $sql = "select * from category";
+  $cat = $con->query($sql);
 ?>
 
 
@@ -159,26 +166,7 @@ include('db.php');
       }  
   }
   ?>
-  <!--            
-              <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <div class="icon">
-                  <i class="lni-users"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Meet our team</h3>
-                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con- sequuntur magni dolores </p>
-                </div>
-              </div>
-              <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="700ms">
-                <div class="icon">
-                  <i class="lni-medall-alt"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Our Creation</h3>
-                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con- sequuntur magni dolores </p>
-                </div>
-              </div>
--->
+
             </div>
           </div>
         </div>
@@ -194,18 +182,24 @@ include('db.php');
           <p>A desire to help and empower others between community contributors in technology <br> began to grow in 2020.</p>
         </div>
         <div class="row">
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="0.3s">
-              <div class="icon">
-                <i class="lni-pencil"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">Content Writing</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
+
+<?php
+while($ser1=$ser->fetch_assoc()){
+$s1 =' <!-- Services item -->';
+$s1 .='           <div class="col-md-6 col-lg-4 col-xs-12">';
+$s1 .='             <div class="services-item wow fadeInRight" data-wow-delay="0.3s">';
+$s1 .='               <div class="icon">';
+$s1 .='                 <i class="'.$ser1['icon'].'"></i>';
+$s1 .='               </div>';
+$s1 .='               <div class="services-content">';
+$s1 .='                 <h3><a href="#">'.$ser1['title'].'</a></h3>';
+$s1 .='                 <p>'.$ser1['description'].'</p>';
+$s1 .='               </div>';
+$s1 .='             </div>';
+$s1 .='           </div>';
+echo $s1;
+}
+/*
           <!-- Services item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
             <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
@@ -265,7 +259,8 @@ include('db.php');
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
               </div>
             </div>
-          </div>
+          </div>*/
+          ?>
         </div>
       </div>
     </section>
@@ -295,29 +290,34 @@ include('db.php');
           <p>A desire to help and empower others between community contributors in technology <br> began to grow in 2020.</p>
         </div>
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <!-- Team Item Starts -->
-            <div class="team-item text-center wow fadeInRight" data-wow-delay="0.3s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-01.png" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">David Smith</a></h3>
-                <p>Chief Operating Officer</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3">
+<?php
+while($team=$tem->fetch_assoc()){
+
+$tm =  '        <div class="col-sm-6 col-md-6 col-lg-3">';
+$tm .= '           <!-- Team Item Starts -->';
+$tm .= '           <div class="team-item text-center wow fadeInRight" data-wow-delay="0.3s">';
+$tm .= '             <div class="team-img">';
+$tm .= '               <img class="img-fluid" src="admin/'.$team['efile'].'" alt="">';
+$tm .= '               <div class="team-overlay">';
+$tm .= '                 <div class="overlay-social-icon text-center">';
+$tm .= '                   <ul class="social-icons">';
+$tm .= '                     <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>';
+$tm .= '                     <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>';
+$tm .= '                     <li><a href="#"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>';
+$tm .= '                   </ul>';
+$tm .= '                 </div>';
+$tm .= '               </div>';
+$tm .= '             </div>';
+$tm .= '             <div class="info-text">';
+$tm .= '               <h3><a href="#">'.$team['name'].'</a></h3>';
+$tm .= '               <p>'.$team['role'].'</p>';
+$tm .= '             </div>';
+$tm .= '           </div>';
+$tm .= '           <!-- Team Item Ends -->';
+$tm .= '         </div>';
+echo $tm;
+}
+/*          <div class="col-sm-6 col-md-6 col-lg-3">
             <!-- Team Item Starts -->
             <div class="team-item text-center wow fadeInRight" data-wow-delay="0.6s">
               <div class="team-img">
@@ -382,7 +382,8 @@ include('db.php');
                 <h3><a href="#">Marijn Otte</a></h3>
                 <p>Front-end Developer</p>
               </div>
-            </div>
+            </div>*/
+?>
             <!-- Team Item Ends -->
           </div>
           
@@ -457,25 +458,31 @@ include('db.php');
           <p>A desire to help and empower others between community contributors in technology <br> began to grow in 2020.</p>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="table wow fadeInLeft" data-wow-delay="1.2s">
-              <div class="title">
-                <h3>Basic</h3>
-              </div>
-              <div class="pricing-header">
-                <p class="price-value">$12.90<span>/ Month</span></p>
-              </div>
-              <ul class="description">
-                <li>Business Analyzing</li>
-                <li>24/7 Tech Suport</li>
-                <li>Operational Excellence</li>
-                <li>Business Idea Ready</li>
-                <li>2 Database</li>
-                <li>Customer Support</li>
-              </ul>
-              <button class="btn btn-common">Get It</button>
-            </div> 
-          </div>
+<?php
+
+while($plan=$pln->fetch_assoc()){
+  $des = explode(",",$plan['description']);
+$p1 = '          <div class="col-lg-4 col-md-6 col-xs-12">';
+$p1 .= '            <div class="table wow fadeInLeft" data-wow-delay="1.2s">';
+$p1 .= '              <div class="title">';
+$p1 .= '                <h3>'.$plan['title'].'</h3>';
+$p1 .= '              </div>';
+$p1 .= '              <div class="pricing-header">';
+$p1 .= '                <p class="price-value">'.$plan['price'].'<span>/ Month</span></p>';
+$p1 .= '              </div>';
+$p1 .= '              <ul class="description">';
+
+               for($i=0;$i<count($des);$i++){
+$p1 .= '                <li>'.$des[$i].'</li>';
+              }
+$p1 .= '              </ul>';
+$p1 .= '              <button class="btn btn-common">Get It</button>';
+$p1 .= '            </div> ';
+$p1 .= '          </div>';
+
+echo $p1;          
+}
+/*  
           <div class="col-lg-4 col-md-6 col-xs-12 active">
             <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
               <div class="title">
@@ -517,6 +524,8 @@ include('db.php');
         </div>
       </div>
     </section>
+*/
+?>
     <!-- Pricing Table Section End -->
 
     <div class="skill-area section-padding">
@@ -573,11 +582,25 @@ include('db.php');
         <div class="row">          
           <div class="col-md-12">
             <!-- Portfolio Controller/Buttons -->
-            <div class="controls text-center">
-              <a class="filter active btn btn-common btn-effect" data-filter="all">
-                All 
-              </a>
-              <a class="filter btn btn-common btn-effect" data-filter=".design">
+<?php
+echo            '<div class="controls text-center">';
+$f=0;
+while($ct=$cat->fetch_assoc()){
+  if($f==0){
+    $c="active";
+    $d="";
+  }
+  else{
+    $c="";
+    $d=".";
+  }
+echo'            <a class="filter '.$c.' btn btn-common btn-effect" data-filter="'.$d.$ct['category'].'">';
+echo               ucfirst($ct['category']);
+echo'              </a>';
+$f=1;
+
+}
+/*              <a class="filter btn btn-common btn-effect" data-filter=".design">
                 Design 
               </a>
               <a class="filter btn btn-common btn-effect" data-filter=".development">
@@ -586,13 +609,17 @@ include('db.php');
               <a class="filter btn btn-common btn-effect" data-filter=".print">
                 Print 
               </a>
-            </div>
+*/
+echo            '</div>';
+?>
             <!-- Portfolio Controller/Buttons Ends-->
           </div>
         </div>
 
         <!-- Portfolio Recent Projects -->
         <div id="portfolio" class="row">
+          
+          
           <div class="col-lg-4 col-md-6 col-xs-12 mix development print">
             <div class="portfolio-item">
               <div class="shot-item">
@@ -610,6 +637,8 @@ include('db.php');
               </div>               
             </div>
           </div>
+          
+          
           <div class="col-lg-4 col-md-6 col-xs-12 mix design print">
             <div class="portfolio-item">
               <div class="shot-item">

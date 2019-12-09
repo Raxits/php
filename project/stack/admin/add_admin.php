@@ -209,7 +209,7 @@ include('../db.php');
               <label class="control-label">Profile Image</label>
               <div class="controls">
                 <input type="file" name="pimg" accept="image/jpeg" style = "width:200px;"/>
-                <?php if(isset($_REQUEST['id'])){ echo "<img src='$pl1' width = '120px' height = '120px' alt='pimg.jpeg'>"; }
+                <?php if(isset($_REQUEST['id'])){ echo "<img src='".@$pl1."' width = '120px' height = '120px' alt='pimg.jpeg'>"; }
                 ?>
               </div>
               

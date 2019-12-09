@@ -80,6 +80,63 @@
 
       </ul>
     </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Services</span> </a>
+      <ul>
+        <li><a href="add_service.php">Add Service</a></li>
+        <li><a href="view_service.php">View Service</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Team</span> </a>
+      <ul>
+        <li><a href="add_team.php">Add Team</a></li>
+        <li><a href="view_team.php">View Team</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Plan</span> </a>
+      <ul>
+        <li><a href="add_plan.php">Add Plan</a></li>
+        <li><a href="view_plan.php">View Plan</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Category</span> </a>
+      <ul>
+        <li><a href="add_category.php">Add Category</a></li>
+        <li><a href="view_category.php">View Category</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Sub-Category</span> </a>
+      <ul>
+        <li><a href="add_subcategory.php">Add Sub-Category</a></li>
+        <li><a href="view_subcategory.php">View Sub-Category</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Testimonial</span> </a>
+      <ul>
+        <li><a href="add_testimonial.php">Add Testimonial</a></li>
+        <li><a href="view_testimonial.php">View Testimonial</a></li>
+
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Blog</span> </a>
+      <ul>
+        <li><a href="add_blog.php">Add Blog</a></li>
+        <li><a href="view_blog.php">View Blog</a></li>
+
+      </ul>
+    </li>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Contact</span> </a>
+      <ul>
+        <li><a href="view_contact.php">View Contact</a></li>
+      </ul>
+    </li>
+
+
 
 </div>
 <!--sidebar-menu-->

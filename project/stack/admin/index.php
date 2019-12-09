@@ -1,10 +1,7 @@
 <?php
 include('header.php');
 include('../db.php');
-$dir = "pic";
-if(!file_exists($dir) && !is_dir($dir)){
-  mkdir($dir);
-}
+
 ?>
 
 
